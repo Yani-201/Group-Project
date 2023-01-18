@@ -1,7 +1,7 @@
 # Group-Project
 Selected Title: Movie Review
 
-Section_3 
+Section: 3 
 
 Group Members
 Yanet Mekuria (UGR/7313/13)
