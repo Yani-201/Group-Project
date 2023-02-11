@@ -1,0 +1,393 @@
+/* * {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+body {
+    background-color:rgb(10, 10, 10);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu', Verdana, sans-serif;
+    font-weight: 400;
+    line-height: 2em;
+    font-size: 1.2rem;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+a {
+    text-decoration: none;
+    color: cyan;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 3.6rem;
+}
+h2 {
+    margin: 2em 0px 0.8em;
+    padding: 0;
+    font-size: 2.5rem;
+}
+p {
+    margin: 10px 0px;
+}
+input[type=text], input[type=email] {
+    width: 50%;
+    padding: 1%;
+    margin: clamp(2px, 5px, 1%) 0px;
+
+}
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 12px 20px;
+    margin: clamp(2px, 5px, 1%) 0px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+main {
+    width: 60%;
+    max-width: 990px;
+    margin: 0px auto;
+    background-color:  rgb(17, 19, 19);
+    background-color:rgb(10, 10, 10);
+
+}
+
+input[type=button], input[type=submit], input[type=reset], input::file-selector-button {
+
+    background-color: #32cbce;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    margin: 4px 4px 20px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+
+th, td {
+    padding: 12px;
+    border: 1px solid #373737;
+}
+th {
+    background-color: white;
+    color: black;
+}
+
+
+tr:nth-child(even){background-color: #2d2d2d;}
+
+footer {
+    margin: auto auto 0px;
+    background-color: black;
+    width: 60%;
+    max-width: 990px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    
+}
+footer a {
+    display: flex;
+    padding: 5px 10px;
+}
+
+
+
+.header__size--1 {
+    margin: 0;
+    padding: 1em 0px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    background-color: rgb(9, 25, 26);
+
+}
+
+.navigation__item {
+    display: flex;
+    padding: 10px 20px;
+
+
+}
+.navigation__item a {
+    color: white;
+}
+.navigation__item--active {
+    background-color: rgb(39, 39, 39);
+}
+.navigation__item--active a{
+    color: rgb(249, 249, 249);
+
+}
+.movie-list {
+    display: flex;
+    margin: 3em auto 5em;
+}
+.slideshow {
+
+    display: flex;
+    margin: auto;
+    width: 100%;
+    overflow-x: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5%;
+    background-color: rgb(9, 25, 26);
+    align-items: center;
+}
+
+.slideshow__item {
+    flex: auto;
+    margin: 0 0.5em;
+
+
+}
+.list {
+    display: block;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+.query {
+    margin: 15px 0px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.query__label {
+    margin: 0;
+    flex: 1;
+}
+.query__input {
+    margin: 0;
+    flex: 3;
+}
+
+.search {
+    margin: 3em 0px 1em;
+    align-items: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.search__input {
+    width: 40%;
+    min-width: 200px;
+    height: 3em;
+    padding: 0.5em;
+}
+.search__button {
+    margin-left: 0.5em;
+    padding: 0.6em 0.8em;
+    font-size: 1rem;
+}
+
+
+.movie-catalogue {
+    display: grid;
+    background-color: #0a2121;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.movie-catalogue__item {
+    display: flex;
+    flex-direction: row; 
+    text-decoration: none;
+    color: white;
+    display: grid;
+    padding: 1em 3em;
+    grid-template-columns: 1fr 60%;
+
+}
+.movie-catalogue__item:hover {
+    background-color: #1f6363;
+    cursor: pointer;
+    
+}
+
+.trailer-container {
+    position: relative;
+    margin: 30px auto 50px;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; 
+}
+  
+.trailer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+.hidden{
+    display: none;
+    height: 0px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+.right {
+    float: right;
+}
+.red {
+    color: rgb(202, 47, 47);
+}
+::-webkit-scrollbar {
+    border-radius: 10px;
+
+}
+::-webkit-scrollbar-thumb:horizontal{
+    background: rgb(48, 50, 50);
+    border: 1px solid #5b5b5b;
+    border-radius: 10px;
+}
+@media screen and (max-width: 800px) {
+
+    .query {   
+      flex-direction: column;
+    }
+    .movie-catalogue__item {
+        grid-template-columns: 100%;
+        padding: 0.5em 1em;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .navigation, footer, .slideshow {   
+      flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        width: 80%;
+    }
+    h1 {
+        line-height: 1em;
+    }
+    footer {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    input[type=text], input[type=email], textarea {
+        width: 90%;
+    }
+} */
+
+body {
+    background-color:rgb(10, 10, 10);
+    color: white;
+    font-family: 'Ubuntu', Verdana, sans-serif;
+    font-weight: 400;
+    line-height: 2em;
+    font-size: 1.2rem;
+}
+a, .a {
+    text-decoration: none;
+    color: cyan;
+}
+
+footer, .navlg {
+    background-color: black;
+    font-size: 0.8em;
+}
+.header__size--1 {
+    background-image: url("../images/bgrd3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 12%;
+    
+}
+.navBg {
+    background-color: rgb(9, 25, 26);
+
+}
+.container {
+    width: 60%;
+}
+.slideshow {
+    background-color: rgb(9, 25, 26);
+
+}
+.red {
+    color: rgb(202, 47, 47);
+}
+.trailer-container {
+    position: relative;
+    margin: 30px auto 50px;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; 
+}
+  
+.trailer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+::-webkit-scrollbar:horizontal{
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    background: rgb(16, 20, 20);
+    border: 1px solid rgb(171, 171, 171);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+}
+@media screen and (max-width: 800px) {
+    .slideshow {   
+      flex-direction: column;
+    }
+}
