@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config()
 export const jwtConstants = {
-    secret: 'veryveryhiddensecret',
+    secret: process.env.JWT_SECRET ?? "defaultKeyThatShouldBeChangedWithEnvVar",
 };
