@@ -13,7 +13,7 @@ class movieTemplate {
 
                 <article class="row g-0 bg-dark text-light">
                     <div class="col-md-4 ">
-                        <img class="img-fluid rounded-start" src="${coverPage}"
+                        <img class="img-fluid rounded-start" src="${request.domain}${coverPage}"
                             alt="${title} movie cover poster" width="166" height="250">
                     </div>
                     <div class="col-md-8 card-body ml-5">
@@ -65,19 +65,30 @@ async function createMovie(e) {
 
     const title = document.querySelector("#title").value.trim()
     const desc = document.querySelector("#desc").value.trim()
-    const cover = document.querySelector("#cover").value.trim()
+    const cover = document.querySelector("#cover")
     const trailer = document.querySelector("#trailer").value.trim()
 
     //CREATE MOVIE WITH CREATE MOVIE REQUEST TO API
-    const response = await request.Post("movies", {
-        title: title,
-        description: desc,
-        coverPage: cover,
-        trailer: trailer
+    const formData = new FormData();
+    formData.append('coverPage', cover.files[0]);
+
+    formData.append("title", title)
+    formData.append("description", desc)
+    formData.append("trailer", trailer)
+
+    console.log(formData.entries);
+    const response = await fetch("http://localhost:3000/movies", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': "Bearer " + sessionStorage.getItem("jwt"),
+        },
+        body: formData,
     });
 
-    const data = await response.json()
     if (!response.ok) {
+        const data = await response.json()
+
         if (data.message == "Unauthorized") {
             alert("Unauthorized: you should be logged in to create movie")
             location.href = "login.html"
@@ -89,9 +100,10 @@ async function createMovie(e) {
     }
 
     else {
+        const data = response.json();
         const { id } = data;
         sessionStorage.setItem("currentMovie", id)
-        location.href = "movie.html"
+        location.reload()
     }
 
 

@@ -20,17 +20,18 @@ export class MoviesService {
         return this.moviesRepository.findOneBy({ title })
     }
 
-    async createMovie(createMovieDto: CreateMovieDto, user: User) {
+    async createMovie(createMovieDto: CreateMovieDto, user: User, image: string) {
         const existingMovie = await this.findOne(createMovieDto.title);
         if (existingMovie) {
             throw new BadRequestException('Movie already exists', { cause: new Error(), description: 'That movie already exists, please search for it to add a review.' })
         }
         const newMovie = this.moviesRepository.create(createMovieDto);
-        const trailerLink = newMovie.trailer;
+        const trailerLink = newMovie.trailer; 
         if (trailerLink) {
             newMovie.trailer = `https://www.youtube.com/embed${trailerLink.slice(trailerLink.lastIndexOf('/'))}`
         }
         newMovie.createdBy = await this.userService.findOne(user.username);
+        newMovie.coverPage = image;
         return this.moviesRepository.save(newMovie);
     }
 
@@ -71,4 +72,5 @@ export class MoviesService {
         return reviews;
         
     }
+    uploadImage() {}
 }
