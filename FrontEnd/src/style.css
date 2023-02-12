@@ -4,6 +4,7 @@
 html, body {
     height: 100%;
 }
+
 body {
     background-color:rgb(10, 10, 10);
     color: white;
@@ -22,6 +23,7 @@ ul {
     padding: 0;
 
 }
+
 a {
     text-decoration: none;
     color: cyan;
@@ -37,6 +39,7 @@ h2 {
     padding: 0;
     font-size: 2.5rem;
 }
+
 p {
     margin: 10px 0px;
 }
@@ -46,6 +49,7 @@ input[type=text], input[type=email] {
     margin: clamp(2px, 5px, 1%) 0px;
 
 }
+
 textarea {
     width: 50%;
     height: 150px;
@@ -109,6 +113,7 @@ footer {
 
     
 }
+
 footer a {
     display: flex;
     padding: 5px 10px;
