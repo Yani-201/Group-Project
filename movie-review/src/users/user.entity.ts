@@ -1,3 +1,4 @@
+import { Movie } from './../movies/movie.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
@@ -16,4 +17,6 @@ export class User {
   @Exclude()
   password: string;
 
+  @OneToMany(() => Movie, (movie) => movie.createdBy)
+  created: Movie[];
 }

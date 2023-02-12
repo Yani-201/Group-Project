@@ -10,7 +10,7 @@ export class UsersService {
     constructor(@InjectRepository(User) private usersRepository: Repository<User>) {}
 
     findAll (): Promise<User[]> {
-        return this.usersRepository.find()
+        return this.usersRepository.find( {relations: ['created']} )
 
     }
 
@@ -25,7 +25,7 @@ export class UsersService {
     }
 
     async findOne (username: string, withCheck:boolean=true): Promise<User> {
-        const user = await this.usersRepository.findOne({ where: { username: username }});
+        const user = await this.usersRepository.findOne({ where: { username: username }, relations: ['created']});
         if (!user && withCheck) {
             throw new NotFoundException("User with that username doesn't exist.")
         }
