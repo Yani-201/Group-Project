@@ -68,7 +68,7 @@ async function createMovie(e) {
     const cover = document.querySelector("#cover").value.trim()
     const trailer = document.querySelector("#trailer").value.trim()
 
-    //TODO: CREATE MOVIE WITH CREATE MOVIE REQUEST TO API
+    //CREATE MOVIE WITH CREATE MOVIE REQUEST TO API
     const response = await request.Post("movies", {
         title: title,
         description: desc,
@@ -83,10 +83,11 @@ async function createMovie(e) {
             location.href = "login.html"
         }
         else {
-            alert(data.messag + data.error)
+            alert(data.message + data.error)
         }
         console.error(data)
     }
+
     else {
         const { id } = data;
         sessionStorage.setItem("currentMovie", id)
