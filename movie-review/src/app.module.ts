@@ -1,3 +1,5 @@
+import { MoviesModule } from './movies/movies.module';
+import { Movie } from './movies/movie.entity';
 import { User } from './users/user.entity';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -15,9 +17,9 @@ import { ConfigModule } from '@nestjs/config';
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: 'moviereview',
-    entities: [User],
+    entities: [User, Movie],
     synchronize: false,
-  }), UsersModule, AuthModule,],
+  }), UsersModule, AuthModule, MoviesModule],
   controllers: [AppController],
   providers: [AppService],
 })
