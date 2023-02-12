@@ -16,10 +16,11 @@ Group Members
 The website moviereview lets any user post a movie where other users can post reviews on. The movie pannel has a coverPage, a trailer, and a description. And the reviews have rating(1-10) and review. The two features with _CRUD_ that we decided to implement are the **Movie** and **Review**. 
 
 
-***BEFORE TESTING OUR IMPLEMENTATION, Its important that you set up a mysql database for the backend to operate on and put your mysql user(usually root) and mysql password in the .env file like this: ***
+***BEFORE TESTING OUR IMPLEMENTATION, Its important that you set up a mysql database for the backend to operate on and put your mysql user(usually root) and mysql password in the .env file at "./movie-review/.env" like this: ***
+
 ```
 DATABASE_USER = "root"
-DATABASE_PASSWORD = "PASSWORD"
+DATABASE_PASSWORD = "INSET_YOUR_PASSWORD_HERE"
 ```
 
 
