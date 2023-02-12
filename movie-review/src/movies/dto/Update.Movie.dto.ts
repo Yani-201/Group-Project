@@ -12,7 +12,7 @@ export class UpdateMovieDto {
 
     @IsOptional()
     @IsNotEmpty()
-    coverpage: string;
+    coverPage: string;
 
     @IsOptional()
     @IsNotEmpty()

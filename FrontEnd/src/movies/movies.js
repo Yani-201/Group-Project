@@ -76,7 +76,6 @@ async function createMovie(e) {
     formData.append("description", desc)
     formData.append("trailer", trailer)
 
-    console.log(formData.entries);
     const response = await fetch("http://localhost:3000/movies", {
         method: "POST",
         headers: {

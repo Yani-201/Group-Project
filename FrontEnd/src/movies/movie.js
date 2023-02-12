@@ -76,7 +76,7 @@ async function updateMovie(e) {
     // GET FORM ELEMENTS
     const title = document.querySelector("#title").value.trim()
     const desc = document.querySelector("#desc").value.trim()
-    const cover = document.querySelector("#cover").value.trim()
+    const cover = document.querySelector("#cover")
     const trailer = document.querySelector("#trailer").value.trim()
 
     //VALIDATION
@@ -88,23 +88,36 @@ async function updateMovie(e) {
 
 
     //API CALL
-    const data = {}
+    const formData = new FormData();
+
     if (title) {
-        data["title"] = title
+        formData.append("title", title)
+
     }
     if (desc) {
-        data["description"] = desc
+        formData.append("description", desc)
+
     }
-    if (cover) {
-        data["coverPage"] = cover
+    if (cover.value) {
+        formData.append('coverPage', cover.files[0]);
     }
+
     if (trailer) {
-        data["trailer"] = trailer
+        formData.append("trailer", trailer)
     }
-    const res = await request.Patch(`movies/${sessionStorage.getItem("currentMovie")}`, data);
-    const resData = await res.json();
+
+    const response = await fetch(`http://localhost:3000/movies/${sessionStorage.getItem("currentMovie")}`, {
+        method: "PATCH",
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': "Bearer " + sessionStorage.getItem("jwt"),
+        },
+        body: formData,
+    });
+
 
     if (!res.ok) {
+        const resData = await res.json();
         if (resData.message.constructor === Array) {
             alert(resData.message[0])
         } else {

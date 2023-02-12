@@ -64,8 +64,9 @@ export class MoviesController {
     @UseGuards(JwtAuthGuard)
 	@Patch(':id')
 	@UsePipes(ValidationPipe)
-	updateMovie(@Param('id', ParseIntPipe) id: number, @Body() updateMovieDto: UpdateMovieDto, @Request() req) {
-		return this.moviesService.updateMovie(id, updateMovieDto, req.user);
+	@UseInterceptors(FileInterceptor('coverPage', storage))
+	updateMovie(@Param('id', ParseIntPipe) id: number, @Body() updateMovieDto: UpdateMovieDto, @Request() req, @UploadedFile() file: Express.Multer.File) {
+		return this.moviesService.updateMovie(id, updateMovieDto, req.user, file.path);
 	}
 
 	

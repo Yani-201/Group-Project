@@ -44,7 +44,7 @@ export class MoviesService {
         return {}
     }
 
-    async updateMovie(id: number, updateMovieDto: UpdateMovieDto, user) {
+    async updateMovie(id: number, updateMovieDto: UpdateMovieDto, user, image:string) {
         const movie = await this.findById(id);
         if (movie.createdBy.id !== user.userId) {
             throw new ForbiddenException("Action Forbidden.", { cause: new Error(), description: 'Movies can only be updated by the users that created them.' })
@@ -54,7 +54,10 @@ export class MoviesService {
             updateMovieDto.trailer = `https://www.youtube.com/embed${trailerLink.slice(trailerLink.lastIndexOf('/'))}`
         
         }
+        updateMovieDto.coverPage = image;
+
         const updatedMovie = this.moviesRepository.merge(movie, updateMovieDto);
+        console.log(updateMovieDto)
         await this.moviesRepository.save(updatedMovie);
         return {}
     }
@@ -72,5 +75,4 @@ export class MoviesService {
         return reviews;
         
     }
-    uploadImage() {}
 }
