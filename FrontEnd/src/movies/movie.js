@@ -29,7 +29,6 @@ else {
 
     //DISABLE USER SPECIFIC BUTTONS
     if (createdBy.username.toLowerCase() != sessionStorage.getItem("currentUser").toLowerCase()) {
-        console.log(createdBy.username);
         document.querySelector("#editMovie").disabled = true;
         deleteButton.disabled = true;
     }
