@@ -2,7 +2,6 @@
 if (sessionStorage.getItem("jwt")) {
     loginAnchor = document.querySelector("#login-link").childNodes[0];
     loginAnchor.text = 'Log out';
-    console.log('first')
     loginAnchor.addEventListener('click', (e) => {
         e.preventDefault();
         logOut();
@@ -28,7 +27,8 @@ function validateFeedback() {
 
 function logOut() {
     sessionStorage.removeItem("jwt")
-    location.reload()
+    sessionStorage.removeItem("currentUser")
+    location.href = "home.html"
 }
 // function validateApply() {
 //     console.log('here');

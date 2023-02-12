@@ -35,7 +35,7 @@ async function register(e) {
         document.registerForm.username.focus();
         return false;
     }
-    if (password < 5) {
+    if (password.length < 5) {
         alert("password must be longer than 4 letters");
         document.registerForm.password.focus();
         return false;
@@ -77,7 +77,9 @@ async function login(name = null, pass = null) {
     else {
         const { access_token } = await response.json();
         sessionStorage.setItem("jwt", access_token);
-        location.href = "./home.html"
+        sessionStorage.setItem("currentUser", username);
+        console.log('object');
+        location.href = document.referrer == "" ? "home.html" : document.referrer;
     }
 
 
