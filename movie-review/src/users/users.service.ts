@@ -25,7 +25,7 @@ export class UsersService {
     }
 
     async findOne (username: string, withCheck:boolean=true): Promise<User> {
-        const user = await this.usersRepository.findOne({ where: { username: username }, relations: ['created']});
+        const user = await this.usersRepository.findOne({ where: { username: username }, relations: ['created', 'reviews']});
         if (!user && withCheck) {
             throw new NotFoundException("User with that username doesn't exist.")
         }

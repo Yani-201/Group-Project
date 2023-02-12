@@ -1,4 +1,5 @@
 import { Movie } from './../movies/movie.entity';
+import { Review } from './../reviews/review.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
@@ -17,6 +18,10 @@ export class User {
   @Exclude()
   password: string;
 
+  @OneToMany(() => Review, (review) => review.reviewer)
+  reviews: Review[];
+
   @OneToMany(() => Movie, (movie) => movie.createdBy)
   created: Movie[];
+
 }
