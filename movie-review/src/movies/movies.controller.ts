@@ -19,6 +19,12 @@ export class MoviesController {
 		return this.moviesService.findById(id);
 	}
 
+	@Get(':id/reviews')
+	@UseInterceptors(ClassSerializerInterceptor)
+	getReviewsForMovie(@Param('id', ParseIntPipe) id) {
+		return this.moviesService.findReviews(id);
+	}
+
     @UseGuards(JwtAuthGuard)
 	@Post() 
 	@UsePipes(ValidationPipe)

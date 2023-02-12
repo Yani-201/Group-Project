@@ -1,10 +1,11 @@
+import { Review } from './../reviews/review.entity';
 import { UsersService } from './../users/users.service';
 import { User } from './../users/user.entity';
 import { UpdateMovieDto } from './dto/Update.Movie.dto';
 import { CreateMovieDto } from './dto/CreateMovie.dto';
 import { Movie } from './movie.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Injectable, BadRequestException, NotFoundException, HttpException, HttpStatus, ForbiddenException } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -58,10 +59,16 @@ export class MoviesService {
     }
 
     async findById(id: number): Promise<Movie> {
-        const movie = await this.moviesRepository.findOne({ where: { id }, relations: ['createdBy', 'reviews']});
+        const movie = await this.moviesRepository.findOne({ where: { id }, relations: ['createdBy']});
         if (!movie) {
             throw new NotFoundException("Movie doesn't exist.");
         }
         return movie;
+    }
+
+    async findReviews(id: number): Promise<Review[]> {
+        const { reviews } = await this.moviesRepository.findOne({ where: { id }, relations: ['reviews']});
+        return reviews;
+        
     }
 }

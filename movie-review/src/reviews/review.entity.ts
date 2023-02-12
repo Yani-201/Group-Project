@@ -10,7 +10,7 @@ export class Review {
   @Column()
   rating: number;
 
-  @Column()
+  @Column("longtext")
   review: string;
 
   @ManyToOne(() => Movie, (movie) => movie.reviews, { onDelete: "CASCADE" })
