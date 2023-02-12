@@ -1,5 +1,5 @@
 import { User } from './user.entity';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/CreateUser.dto';
@@ -32,8 +32,13 @@ export class UsersService {
         return user;
     }
     
-    async remove(id: number): Promise<void> {
-        await this.usersRepository.delete(id);
+    async remove(id: number, user) {
+        if (id != user.userId) {
+            throw new ForbiddenException("Action Forbidden.", { cause: new Error(), description: 'User can not delete other users, only themselves' })
+            
+        }
+        await this.usersRepository.delete(id)
+        return {};
     }
 
 

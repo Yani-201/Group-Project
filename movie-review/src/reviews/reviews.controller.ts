@@ -35,7 +35,6 @@ export class ReviewsController {
     }
 
     @UseGuards(JwtAuthGuard)
-    @UsePipes(ValidationPipe)
     @Delete(':id')
     deleteReview(@Param('id', ParseIntPipe) id, @Request() req) {
       return this.reviewsService.delete(id, req.user);
